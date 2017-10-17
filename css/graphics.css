@@ -5,19 +5,21 @@ html, body {
   margin: 0;
   overflow: hidden;
 }
+/*
 #instrBox {
   color: #a0a0a0;
   font-family:"Arial";
   font-size: 100%;
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
+  -webkit-user-select: none;  /* Chrome all / Safari all 
+  -moz-user-select: none;     /* Firefox all 
   -ms-user-select: none;  
 }
+*/
 #overlay {
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #f0a0a0;
+  color: #a0a0a0;
   font-family:"Arial";
   font-size: 300%;
   -webkit-user-select: none;  /* Chrome all / Safari all */

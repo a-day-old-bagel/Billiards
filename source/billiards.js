@@ -3,7 +3,7 @@
 //-----------------------------------------------------------*/
 window.onload = function init() {
 
-  var desiredHeight = document.body.clientHeight * 0.96;
+  var desiredHeight = document.body.clientHeight ;// * 0.96;
   var desiredWidth = document.body.clientWidth ;//* 0.991;
   $("#gl-canvas").width(desiredWidth);
   $("#gl-canvas").height(desiredHeight);
