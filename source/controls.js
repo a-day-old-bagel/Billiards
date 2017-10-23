@@ -177,6 +177,7 @@ var controls = {
     // }
     function touchPress(e) {
       controls.touchIsPressed = true;
+      physics.flashMessage("PRESSED");
     }
     function touchPressEnd(e) {
       controls.touchIsPressed = false;
