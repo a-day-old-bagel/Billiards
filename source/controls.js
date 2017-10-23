@@ -13,7 +13,8 @@ var controls = {
   
   touchMousePrevent: false,
   lastPinch: 1.0,
-  touchHasTapped: false,
+  // touchHasTapped: false,
+  touchIsPressed: false,
   lastPanX: 0.0,
   lastPanY: 0.0,
 
@@ -23,7 +24,8 @@ var controls = {
       return false;
     };
     function setTipPoint(e) {
-      if (e.button == 0 && physics.readyToStrike && !controls.touchHasTapped) {
+      // if (e.button == 0 && physics.readyToStrike && !controls.touchHasTapped) {
+      if (e.button == 0 && physics.readyToStrike && !controls.touchIsPressed) {
         var rect = canvas.getBoundingClientRect();
         var yPlaneIntersect = rayCastPlaneY(e.clientX -
             rect.left, e.clientY - rect.top);
@@ -102,7 +104,8 @@ var controls = {
     this.hMan.add(this.hTap);
     
     function touchPanStart(e) {
-      if (controls.touchHasTapped && physics.readyToStrike) {
+      // if (controls.touchHasTapped && physics.readyToStrike) {
+      if (controls.touchIsPressed && physics.readyToStrike) {
         var rect = canvas.getBoundingClientRect();
         var yPlaneIntersect = rayCastPlaneY(e.center.x -
             rect.left, e.center.y - rect.top);
@@ -117,7 +120,7 @@ var controls = {
         controls.lastPanX = e.deltaX;
         controls.lastPanY = e.deltaY;
       }
-      controls.touchHasTapped = false;
+      // controls.touchHasTapped = false;
     }
     function touchPanMove(e) {
       // prevent touch move events from triggering mouse move events
@@ -169,8 +172,14 @@ var controls = {
       camera.applyZoom((controls.lastPinch - e.scale) * 2.0);
       controls.lastPinch = e.scale;
     }
-    function touchTap(e) {
-      controls.touchHasTapped = true;
+    // function touchTap(e) {
+    //   controls.touchHasTapped = true;
+    // }
+    function touchPress(e) {
+      controls.touchIsPressed = true;
+    }
+    function touchPressEnd(e) {
+      controls.touchIsPressed = false;
     }
 
     this.hMan.on('panstart', touchPanStart);
@@ -180,6 +189,7 @@ var controls = {
     this.hMan.on('pinchmove', touchPinchMove);
     this.hMan.on('pinchstart', touchPinchStart);
     // this.hMan.on('singletap', touchTap);
-    this.hMan.on('press', touchTap);
+    this.hMan.on('press', touchPress);
+    this.hMan.on('pressup', touchPressEnd);
   }
 };
