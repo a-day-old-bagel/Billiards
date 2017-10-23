@@ -179,6 +179,7 @@ var controls = {
     this.hMan.on('pancancel', touchPanCancel);
     this.hMan.on('pinchmove', touchPinchMove);
     this.hMan.on('pinchstart', touchPinchStart);
-    this.hMan.on('singletap', touchTap);
+    // this.hMan.on('singletap', touchTap);
+    this.hMan.on('press', touchTap);
   }
 };
